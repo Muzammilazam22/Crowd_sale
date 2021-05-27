@@ -1,10 +1,10 @@
-pragma solidity ^0.5.0;
-
-import "../GSN/Context.sol";
-import "../token/ERC20/IERC20.sol";
-import "../math/SafeMath.sol";
-import "../token/ERC20/SafeERC20.sol";
-import "../utils/ReentrancyGuard.sol";
+pragma solidity ^0.8.4;
+// SPDX-License-Identifier: MIT
+import "@openzeppelin/contracts/GSN/Context.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /**
  * @title Crowdsale
@@ -82,7 +82,7 @@ contract Crowdsale is Context, ReentrancyGuard {
      * of 2300, which is not enough to call buyTokens. Consider calling
      * buyTokens directly when purchasing tokens from a contract.
      */
-    function() external payable {
+    receive() external payable {
         buyTokens(_msgSender());
     }
 
